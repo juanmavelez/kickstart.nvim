@@ -14,19 +14,17 @@ return {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
     { 'gs', ':Neotree float git_status<CR>', desc = '[G]it [S]tatus' },
   },
-  opts = {
-    filesystem = {
-      window = {
-        mappings = {
-          ['\\'] = 'close_window',
-        },
-      },
-    },
-  },
   config = function()
     require('neo-tree').setup {
-      nable_git_status = true,
-      sources = { 'filesystem', 'git_status' },
+      enable_git_status = true,
+      filesystem = {
+        window = {
+          mappings = {
+            ['\\'] = 'close_window',
+            { 'gs', ':Neotree float git_status<CR>', desc = '[G]it [S]tatus' },
+          },
+        },
+      },
       default_component_configs = {
         git_status = {
           symbols = {
@@ -44,7 +42,6 @@ return {
           },
         },
       },
-
       file_size = {
         enabled = false,
       },
