@@ -43,7 +43,7 @@ return {
       -- Nginx --
       nginx = { 'nginxfmt' },
       yaml = { 'prettierd', 'prettier', stop_after_first = true },
-      markdown = { 'prettierd', 'prettier', stop_after_first = true },
+      markdown = { 'markdownlint', 'prettierd', 'prettier', stop_after_first = true },
     },
   },
 }

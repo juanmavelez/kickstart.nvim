@@ -484,10 +484,12 @@ require('lazy').setup({
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
+      -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
       {
         'mason-org/mason.nvim',
         opts = {
           ensure_installed = {
+            'markdownlint',
             'prettier',
           },
           auto_update = true,
