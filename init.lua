@@ -689,7 +689,21 @@ require('lazy').setup({
       --
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
+      --
+      --
+      --
+
       local ensure_installed = vim.tbl_keys(servers or {})
+
+      -- The `volar` LSP uses the `vue-language-server` package in Mason.
+      -- Replace the server name with the package name so it can be installed.
+      for index, name in ipairs(ensure_installed) do
+        if name == 'volar' then
+          ensure_installed[index] = 'vue-language-server'
+          break
+        end
+      end
+
       vim.list_extend(ensure_installed, {
         'stylua',
       })
@@ -941,5 +955,6 @@ require('lazy').setup({
   },
 })
 
+require 'keymaps'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
